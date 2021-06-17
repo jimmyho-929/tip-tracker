@@ -1,33 +1,80 @@
+const monthsOfYear = [
+  { 
+    month: 'January' ,
+    days: 31
+  },
+  { 
+    month: 'February' ,
+    days: 28
+  },
+  { 
+    month: 'March' ,
+    days: 31
+  },
+  { 
+    month: 'April' ,
+    days: 30
+  },
+  { 
+    month: 'May' ,
+    days: 31
+  },
+  { 
+    month: 'June' ,
+    days: 30
+  },
+  { 
+    month: 'July' ,
+    days: 31
+  },
+  { 
+    month: 'August' ,
+    days: 31
+  },
+  { 
+    month: 'September' ,
+    days: 30
+  },
+  { 
+    month: 'October' ,
+    days: 31
+  },
+  { 
+    month: 'November' ,
+    days: 30
+  },
+  { 
+    month: 'December' ,
+    days: 31
+  },
+]
+
 const getMonth = document.querySelector('h1');
 const month = document.querySelector('select');
 
 month.addEventListener('change', (e) => {
-    if (e.target.value == 'January') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'February') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'March') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'April') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'May') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'June') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'July') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'August') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'September') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'October') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'November') {
-        getMonth.innerHTML = e.target.value
-    } else if (e.target.value == 'December') {
-        getMonth.innerHTML = e.target.value
-    }
-})
+  getMonth.innerHTML = e.target.value;
+  monthsOfYear.forEach((m) => {
+  if (m.month == getMonth.textContent){
+      const orderedList = document.getElementById('list');
+      for (let i = 0; i < m.days; i++) {
+          const li = document.createElement('li');
+          orderedList.appendChild(li)
+          const input = document.createElement('input');
+          li.appendChild(input)
+        }
+      }
+    })
+ })
+
+
+
+
+
+
+
+
+
 
 let currentTip = 0;
 
