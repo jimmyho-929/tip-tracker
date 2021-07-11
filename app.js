@@ -62,14 +62,25 @@ month.addEventListener("change", (e) => {
         const li = document.createElement("li");
         orderedList.appendChild(li);
         const input = document.createElement("input");
-        li.appendChild(input);
-      }
+        input.type = 'number';
+        input.min = '0';
+        li.appendChild(input); 
+        // const button = document.createElement('button');
+        // button.innerHTML = 'Edit';
+        // li.appendChild(button);
+        // button.addEventListener('click', () => {
+        //   if (button.innerHTML == 'Edit') {
+        //     button.innerHTML = 'Save';
+        //   } else if (button.innerHTML == 'Save') {
+        //     button.innerHTML = 'Edit';
+        //   }
+        // })
+      } 
     }
   });
+  const tipInput = document.querySelectorAll('input');
+  tipInput.forEach( tip => { tip.addEventListener('click', () => {tip.value = prompt('Enter tip amount')})})
 });
-let currentTip = 0;
 
-        function totalTip(currentTip, newTip) {
-          currentTip = currentTip + newTip;
-          return currentTip;
-        }
+
+        

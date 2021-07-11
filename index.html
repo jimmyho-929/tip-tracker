@@ -4,31 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' src='style.css'>
+    <link rel='stylesheet' href='style.css'>
     <title>Tip Tracker</title>
 </head>
+
 <body>
-    
-    <label for="month">Month:</label>
+    <div>
+        <label for="month">Month:</label>
 
-<select name="month" id="month">    
-    <option selected value="none" disabled>Select one</option>
-    <option value="January">January</option>
-    <option value="February">February</option>
-    <option value="March">March</option>
-    <option value="April">April</option>
-    <option value="May">May</option>
-    <option value="June">June</option>
-    <option value="July">July</option>
-    <option value="August">August</option>
-    <option value="September">September</option>
-    <option value="October">October</option>
-    <option value="November">November</option>
-    <option value="December">December</option>
-</select>
+        <select name="month" id="month">    
+            <option selected value="none" disabled>Select one</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+    </div>
 
-<h1 id='header'>Tip Tracker</h1>
-<ol id='list'></ol>
+    <h1 id='header'>Tip Tracker</h1>
+
+    <div id='wrapper'>
+        <ol id='list'></ol>
+    </div>
+
     <script src='app.js'></script>
 </body>
 </html>
