@@ -45,11 +45,44 @@ h1 {
 	font-weight: bold;
 }
 
-ol {
-	display: flex;
-	flex-flow: row wrap;
+#menu {	
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+}
+	
+#tips{
+	display: block;
+	text-align: center;
 }
 
 li {
-	margin: .75rem;
+		margin: 1rem;
+	}	
+	
+
+@media (max-width: 400px) {
+
+
+	#menu {
+		text-align: center;
+	}
+
+
+ol {
+		display: flex;
+		flex-flow: row wrap;
+	}
+	
+	::marker {
+		font-style: italic;
+	}
+
+	input {
+		width: 2rem;
+	}
+
+}
+
+@media (max-width:1000px) {
+	
 }

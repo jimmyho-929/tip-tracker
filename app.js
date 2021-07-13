@@ -54,7 +54,7 @@ const month = document.querySelector("select");
 
 month.addEventListener("change", (e) => {
   const orderedList = document.getElementById("list");
-  orderedList.innerHTML = '';
+  orderedList.innerHTML = "";
   getMonth.innerHTML = e.target.value;
   monthsOfYear.forEach((m) => {
     if (m.month == getMonth.textContent) {
@@ -62,9 +62,10 @@ month.addEventListener("change", (e) => {
         const li = document.createElement("li");
         orderedList.appendChild(li);
         const input = document.createElement("input");
-        input.type = 'number';
-        input.min = '0';
-        li.appendChild(input); 
+        input.type = "number";
+        input.min = "0";
+        li.appendChild(input);
+        document.getElementById('tips').innerHTML = `Total Tip: 0`
         // const button = document.createElement('button');
         // button.innerHTML = 'Edit';
         // li.appendChild(button);
@@ -75,12 +76,26 @@ month.addEventListener("change", (e) => {
         //     button.innerHTML = 'Edit';
         //   }
         // })
-      } 
+      }
     }
   });
-  const tipInput = document.querySelectorAll('input');
-  tipInput.forEach( tip => { tip.addEventListener('click', () => {tip.value = prompt('Enter tip amount')})})
-});
-
-
+  const tipInput = document.querySelectorAll("input");
+  const tipArray = []
+  let totalTip = 0;
+  tipInput.forEach((tip) => {
+    tip.addEventListener("click", () => {
+      tip.value = prompt("Enter tip amount");
+      tipArray.push(parseInt(tip.value)); 
+      tipArray.forEach( (tip) => {  
+        totalTip += tip;
+        console.log(tipArray, totalTip)
+        document.getElementById('tips').innerHTML = `Total Tip: ${totalTip}`
         
+      })
+      
+    });
+  
+  });
+  
+  
+});
