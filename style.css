@@ -55,34 +55,51 @@ h1 {
 	text-align: center;
 }
 
-li {
-		margin: 1rem;
-	}	
-	
+#wrapper{
+	display: flex;
+	flex-flow: row wrap;
+}
 
-@media (max-width: 400px) {
+.tip-box { 
 
-
-	#menu {
-		text-align: center;
-	}
-
+}
 
 ol {
 		display: flex;
 		flex-flow: row wrap;
 	}
-	
-	::marker {
-		font-style: italic;
-	}
 
+li {
+		margin: 1rem;
+	}	
+
+::marker {
+		font-style: italic;
+}
+
+/*****************
+
+	MOBILE VIEW
+
+*********/
+
+
+@media (max-width: 400px) {
+
+	#menu {
+		text-align: center;
+	}	
 	input {
 		width: 2rem;
 	}
-
 }
+/*****************
 
-@media (max-width:1000px) {
-	
+	DESKTOP VIEW
+
+*********/
+
+@media (max-width: 1500px) {
+	#menu { margin-left: .5rem;
+	}
 }
