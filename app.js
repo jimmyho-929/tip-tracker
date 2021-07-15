@@ -53,78 +53,45 @@ const getMonth = document.querySelector("h1");
 const month = document.querySelector("select");
 
 month.addEventListener("change", (e) => {
-getMonth.innerHTML = e.target.value;
-
-/******
-Creating 2 divs
- */ 
- 
-
-monthsOfYear.forEach( (m)=> { 
-  if (m.month === e.target.value) {
-     const wrapper = document.getElementById("wrapper");
-      wrapper.innerHTML = `<span id='tips'>Total Tip: 0</span>`;
-      for (let i = 0; i < m.days; i++) {
-        const div = document.createElement("div");
-        const span = document.getElementById("tips");
-        wrapper.insertBefore(div, span);
-        div.innerHTML = `${i+1}`;
-        div.className = "date";
-        const tipBox = document.createElement("div");
-        div.appendChild(tipBox)
-        tipBox.innerHTML = 'Test'
-        tipBox.className = "tip-box"
-    }
-  }
-})
+  getMonth.innerHTML = e.target.value;
 
   /******
-   Creating list item
-   */
+Creating 2 divs
+ */
 
-  // const orderedList = document.getElementById("list");
-  // orderedList.innerHTML = "";
-  // 
-  // monthsOfYear.forEach((m) => {
-  //   if (m.month == getMonth.textContent) {
-  //     for (let i = 0; i < m.days; i++) {
-        // const li = document.createElement("li");
-        // orderedList.appendChild(li);
-        // const input = document.createElement("input");
-        // input.type = "number";
-        // input.min = "0";
-        // li.appendChild(input);
-        // document.getElementById('tips').innerHTML = `Total Tip: 0`
-        // const button = document.createElement('button');
-        // button.innerHTML = 'Edit';
-        // li.appendChild(button);
-        // button.addEventListener('click', () => {
-        //   if (button.innerHTML == 'Edit') {
-        //     button.innerHTML = 'Save';
-        //   } else if (button.innerHTML == 'Save') {
-        //     button.innerHTML = 'Edit';
-        //   }
-        // })
-    //   }
-    // }
+  monthsOfYear.forEach((m) => {
+    if (m.month === e.target.value) {
+      const wrapper = document.getElementById("wrapper");
+      wrapper.innerHTML = ``;
+      for (let i = 0; i < m.days; i++) {
+        const div = document.createElement("div");
+        // const span = document.getElementById("tips");
+        wrapper.appendChild(div);
+        div.innerHTML = `${i + 1}`;
+        div.className = "date";
+        const tipBox = document.createElement("div");
+        div.appendChild(tipBox);
+        tipBox.innerHTML = "XX";
+        tipBox.className = "tip-box";
+      }
+      const tipInput = [...document.getElementsByClassName("tip-box")];
+      const tipArray = [];
+      let totalTip = 0;
+      tipInput.forEach((tip) => {
+        tip.addEventListener("click", () => {
+          tip.value = prompt("Enter tip amount");
+          console.log(totalTip)
+          tip.innerHTML = tip.value;
+          tipArray.push(parseInt(tip.value)); 
+          totalTip = 0;
+          tipArray.forEach((tip) => {
+            totalTip += tip;
+            document.getElementById(
+              "tips"
+            ).innerHTML = `Total Tip: <span style="font-weight:bold">${totalTip}</span>`;
+          });
+        });
+      });
+    }
   });
-  const tipInput = document.querySelectorAll("input");
-  const tipArray = []
-  let totalTip = 0;
-  tipInput.forEach((tip) => {
-    tip.addEventListener("click", () => {
-      tip.value = prompt("Enter tip amount");
-      tipArray.push(parseInt(tip.value)); 
-      tipArray.forEach( (tip) => {  
-        totalTip += tip;
-        console.log(tipArray, totalTip)
-        document.getElementById('tips').innerHTML = `Total Tip: ${totalTip}`
-        
-      })
-      
-    });
-  
-  });
-  
-  
-// });
+});
