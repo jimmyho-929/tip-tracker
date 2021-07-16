@@ -77,10 +77,23 @@ Creating 2 divs
       const tipInput = [...document.getElementsByClassName("tip-box")];
       const tipArray = [];
       let totalTip = 0;
+      let myChart = document.getElementById('myChart').getContext('2d');
+
+      let barChart = new Chart(myChart, {
+        type: 'bar',
+        data: {
+          labels: 'Tips',
+          datasets: [{
+            label: 'Tip',
+            data: totalTip
+          }]
+        },
+        options: {}
+      }) 
+
       tipInput.forEach((tip) => {
         tip.addEventListener("click", () => {
           tip.value = prompt("Enter tip amount");
-          console.log(totalTip)
           tip.innerHTML = tip.value;
           tipArray.push(parseInt(tip.value)); 
           totalTip = 0;
@@ -91,7 +104,11 @@ Creating 2 divs
             ).innerHTML = `Total Tip: <span style="font-weight:bold">${totalTip}</span>`;
           });
         });
+        
       });
     }
   });
 });
+
+
+

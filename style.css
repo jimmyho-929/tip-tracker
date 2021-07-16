@@ -83,6 +83,13 @@ span {
 	margin-top: 0.5rem;
 	font-style: italic;
 }
+
+footer {
+	display: flex;
+	justify-content: flex-end;
+	border-top: 1px solid black;
+}
+
 /*****************
 
 	MOBILE VIEW
