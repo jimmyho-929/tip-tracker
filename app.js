@@ -59,6 +59,7 @@ month.addEventListener("change", (e) => {
   ).innerHTML = `Total Tip: <span style="font-weight:bold">0</span>`
 
   monthsOfYear.forEach((m) => {
+    
     if (m.month === e.target.value) {
       const wrapper = document.getElementById("wrapper");
       wrapper.innerHTML = ``;
@@ -72,68 +73,68 @@ month.addEventListener("change", (e) => {
         tipBox.innerHTML = "XX";
         tipBox.className = "tip-box";
       }
+
       const tipInput = [...document.getElementsByClassName("tip-box")];
       const tipArray = [];
-      let totalTip = 0;
-      
-
+    
       tipInput.forEach((tip) => {
+        
         tip.addEventListener("click", () => {
           tip.value = prompt("Enter tip amount");
           tip.innerHTML = tip.value;
           tip.style.color = 'black';
           tipArray.push(parseInt(tip.value)); 
-          totalTip = 0;
-          tipArray.forEach((tip) => {
-            totalTip += tip;
-            document.getElementById(
-              "tips"
-            ).innerHTML = `Total Tip: <span style="font-weight:bold">${totalTip}</span>`;
+          
+          let totalTip = tipArray.reduce( function(sum, val) {
+            return sum + val;
+          });
+          document.getElementById(
+                "tips"
+              ).innerHTML = `Total Tip: <span style="font-weight:bold">${totalTip}</span>`;
           
                ///////////////////////              
               //     Chart.js      //
              /////////////////////// 
              
-             // setup block
+            //setup block
+              const data = {
+                labels: ['Tips'],
+                datasets: [{
+                  label: 'Tip',
+                  data: [totalTip]
+                }]
+              }
 
-             // config block
+            //  // config block
+              const config = {   
+                type: 'bar',
+                data,
+                options: {}
+              }
 
-             // init block
+            //init block
 
+             let myChart = new Chart(
+              document.getElementById('myChart'),
+              config
+             )
             
-            
-            let myChart = document.getElementById('myChart').getContext('2d');
-            let barChart = new Chart(myChart, {
-            type: 'bar',
-            data: {
-              labels: ['Tips'],
-              datasets: [{
-                label: 'Tip',
-                data: [totalTip]
-              }]
-            },
-            options: {}
-          }) 
-        month.addEventListener('change', () => {barChart.destroy()})
-          // barChart.destroy()
+              function destroy() {
+                myChart.destroy()
+              }
 
-        
-        
+              function render() {
+                myChart = new Chart(document.getElementById('myChart'),
+                config)
+              }
 
-        // barChart = new Chart(myChart, {
-        //   type: 'bar',
-        //   data: {
-        //     labels: ['Tips'],
-        //     datasets: [{
-        //       label: 'Tip',
-        //       data: [totalTip]
-        //     }]
-        //   },
-        //   options: {}
-        // }) 
-            
-          
-          });
+              destroy();
+              render();
+           
+
+            month.addEventListener('change', () => {
+              destroy();
+            })
           
         });
         
