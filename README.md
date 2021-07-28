@@ -1,4 +1,4 @@
-As someone who works in the service industry, tips are my main source of income. This app was created for the main purpose of keeping a log of the tips I've received. 
+As someone who works in the service industry, tips are my main source of income. This app was created for the main purpose of visualizing a log of the tips I've received. 
 
 The 3 features I've chosen to implement are 
   1) Create an array, dictionary or list, populate it with multiple values, retrieve at least one value, and use or display it in your application
