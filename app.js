@@ -89,9 +89,21 @@ month.addEventListener("change", (e) => {
             document.getElementById(
               "tips"
             ).innerHTML = `Total Tip: <span style="font-weight:bold">${totalTip}</span>`;
-              
+          
+               ///////////////////////              
+              //     Chart.js      //
+             /////////////////////// 
+             
+             // setup block
+
+             // config block
+
+             // init block
+
+            
+            
             let myChart = document.getElementById('myChart').getContext('2d');
-          let barChart = new Chart(myChart, {
+            let barChart = new Chart(myChart, {
             type: 'bar',
             data: {
               labels: ['Tips'],
@@ -102,8 +114,10 @@ month.addEventListener("change", (e) => {
             },
             options: {}
           }) 
+        month.addEventListener('change', () => {barChart.destroy()})
+          // barChart.destroy()
 
-          // barChart.destroy();
+        
         
 
         // barChart = new Chart(myChart, {
