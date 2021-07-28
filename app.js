@@ -51,6 +51,28 @@ const monthsOfYear = [
 
 const getMonth = document.querySelector("h1");
 const month = document.querySelector("select");
+let totalTip = 0; 
+
+
+let data = {
+  labels: ['Tips'],
+  datasets: [{
+    label: 'Tip',
+    data: [totalTip]
+  }]
+}
+
+//  // config block
+let config = {   
+  type: 'bar',
+  data,
+  options: {}
+}
+
+let myChart = new Chart(
+  document.getElementById('myChart'),
+  config
+ )
 
 month.addEventListener("change", (e) => {
   getMonth.innerHTML = e.target.value;
@@ -85,7 +107,7 @@ month.addEventListener("change", (e) => {
           tip.style.color = 'black';
           tipArray.push(parseInt(tip.value)); 
           
-          let totalTip = tipArray.reduce( function(sum, val) {
+          totalTip = tipArray.reduce( function(sum, val) {
             return sum + val;
           });
           document.getElementById(
@@ -97,35 +119,34 @@ month.addEventListener("change", (e) => {
              /////////////////////// 
              
             //setup block
-              const data = {
-                labels: ['Tips'],
-                datasets: [{
-                  label: 'Tip',
-                  data: [totalTip]
-                }]
-              }
-
-            //  // config block
-              const config = {   
-                type: 'bar',
-                data,
-                options: {}
-              }
+           
 
             //init block
 
-             let myChart = new Chart(
-              document.getElementById('myChart'),
-              config
-             )
+             
             
               function destroy() {
                 myChart.destroy()
               }
 
               function render() {
+                data = {
+                  labels: ['Tips'],
+                  datasets: [{
+                    label: 'Tip',
+                    data: [totalTip]
+                  }]
+                }
+
+                config = {   
+                  type: 'bar',
+                  data,
+                  options: {}
+                }
+
                 myChart = new Chart(document.getElementById('myChart'),
                 config)
+                
               }
 
               destroy();
