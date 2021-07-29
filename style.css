@@ -86,9 +86,14 @@ span {
 }
 
 footer {
+	margin-top: 10rem;
 	display: flex;
 	justify-content: flex-end;
-	border-top: 1px solid black;
+	/* border-top: 1px solid black; */
+}
+
+canvas {
+	margin-top: 2rem;
 }
 
 .graph {

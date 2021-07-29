@@ -51,37 +51,35 @@ const monthsOfYear = [
 
 const getMonth = document.querySelector("h1");
 const month = document.querySelector("select");
-let totalTip = 0; 
+let totalTip = 0;
 
+// For Chart.js
 
 let data = {
-  labels: ['Tips'],
-  datasets: [{
-    label: 'Tip',
-    data: [totalTip]
-  }]
-}
+  labels: ["Tips"],
+  datasets: [
+    {
+      label: "Tip",
+      data: [totalTip],
+    },
+  ],
+};
 
-//  // config block
-let config = {   
-  type: 'bar',
+let config = {
+  type: "bar",
   data,
-  options: {}
-}
+  options: {},
+};
 
-let myChart = new Chart(
-  document.getElementById('myChart'),
-  config
- )
+let myChart = new Chart(document.getElementById("myChart"), config);
 
 month.addEventListener("change", (e) => {
   getMonth.innerHTML = e.target.value;
   document.getElementById(
     "tips"
-  ).innerHTML = `Total Tip: <span style="font-weight:bold">0</span>`
+  ).innerHTML = `Total Tip: <span style="font-weight:bold">0</span>`;
 
   monthsOfYear.forEach((m) => {
-    
     if (m.month === e.target.value) {
       const wrapper = document.getElementById("wrapper");
       wrapper.innerHTML = ``;
@@ -98,71 +96,53 @@ month.addEventListener("change", (e) => {
 
       const tipInput = [...document.getElementsByClassName("tip-box")];
       const tipArray = [];
-    
+
       tipInput.forEach((tip) => {
-        
         tip.addEventListener("click", () => {
           tip.value = prompt("Enter tip amount");
           tip.innerHTML = tip.value;
-          tip.style.color = 'black';
-          tipArray.push(parseInt(tip.value)); 
-          
-          totalTip = tipArray.reduce( function(sum, val) {
+          tip.style.color = "black";
+          tipArray.push(parseInt(tip.value));
+
+          totalTip = tipArray.reduce(function (sum, val) {
             return sum + val;
           });
           document.getElementById(
-                "tips"
-              ).innerHTML = `Total Tip: <span style="font-weight:bold">${totalTip}</span>`;
-          
-               ///////////////////////              
-              //     Chart.js      //
-             /////////////////////// 
-             
-            //setup block
-           
+            "tips"
+          ).innerHTML = `Total Tip: <span style="font-weight:bold">${totalTip}</span>`;
 
-            //init block
+          function destroy() {
+            myChart.destroy();
+          }
 
-             
-            
-              function destroy() {
-                myChart.destroy()
-              }
+          function render() {
+            data = {
+              labels: ["Tips"],
+              datasets: [
+                {
+                  label: "Tip",
+                  data: [totalTip],
+                },
+              ],
+            };
 
-              function render() {
-                data = {
-                  labels: ['Tips'],
-                  datasets: [{
-                    label: 'Tip',
-                    data: [totalTip]
-                  }]
-                }
+            config = {
+              type: "bar",
+              data,
+              options: {},
+            };
 
-                config = {   
-                  type: 'bar',
-                  data,
-                  options: {}
-                }
+            myChart = new Chart(document.getElementById("myChart"), config);
+          }
 
-                myChart = new Chart(document.getElementById('myChart'),
-                config)
-                
-              }
+          destroy();
+          render();
 
-              destroy();
-              render();
-           
-
-            month.addEventListener('change', () => {
-              destroy();
-            })
-          
+          month.addEventListener("change", () => {
+            destroy();
+          });
         });
-        
       });
     }
   });
 });
-
-
-
